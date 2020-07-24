@@ -1,22 +1,19 @@
-import json
-import requests
+from flask import Flask, request
 
-apiBaseUrl = 'https://finnhub.io/api/v1/'
-token = 'bs2j4mvrh5rc90r5ada0'
-symbol = 'WPP'
-dataType = 'quote'
-
-r1 = requests.get(f'{apiBaseUrl}{dataType}/?symbol={symbol}&token={token}')
-data = json.dumps(r1.json(), sort_keys=True, indent=4)
-
-# print(data)
-
-currentPrice = r1.json()["c"]
-print('Current price:', currentPrice)
-
-r2 = requests.post('/', currentPrice)
-
-print(r2.text)
-print(r2.status_code, r2.reason)
+app = Flask(__name__)
 
 
+# @app.route('/')
+# def hello_world():
+# 	return "Hey, it's the landing page"
+
+
+@app.route('/', methods=['POST'])
+def slash():
+	req_data = request.get_json()
+	test = req_data['test']
+	return test
+
+
+if __name__ == '__main__':
+	app.run(debug=True)
