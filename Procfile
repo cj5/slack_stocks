@@ -1,1 +1,1 @@
-web: slack-stocks wsgi:app
+web: gunicorn wsgi:app
