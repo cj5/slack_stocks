@@ -19,14 +19,14 @@ def stocks():
 		abort(400)
 
 	if request.form.get('text'):
-		symbol = request.form.get('text', None)
+		symbol = request.form.get('text', None).upper()
 		apiBaseUrl = 'https://finnhub.io/api/v1/'
 		token = os.environ['FINNHUB_TOKEN']
 		dataType = 'quote'
 		r = requests.get(f'{apiBaseUrl}{dataType}/?symbol={symbol}&token={token}')
 		currentPrice = r.json()["c"]
 
-		msg = f'{symbol} — Current price: ${currentPrice}'
+		msg = f'{symbol} — *${currentPrice}*'
 	else:
 		msg = 'Please follow command with a valid ticker symbol'
 
