@@ -1,0 +1,1 @@
+web: slack-stocks wsgi:app
