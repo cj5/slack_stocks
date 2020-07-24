@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-	return "<p>Slack stocks app</p>"
+	return '<h1 style="font-family: sans-serif;">Slack stocks app</h1>'
 
 
 @app.route('/stocks', methods=['POST'])
